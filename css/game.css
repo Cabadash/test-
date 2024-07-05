@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+#game-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #8c9967;
+    font-family: 'Press Start 2P', cursive;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    padding-top: 50px;
+}
+
+#title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #2c2c2c;
+    text-shadow: 2px 2px #ffffff;
+    animation: pulseTitle 2s infinite;
+    text-align: center;
+}
+
+@keyframes pulseTitle {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#game-container {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(140, 153, 103, 0.2) 40px,
+        rgba(140, 153, 103, 0.2) 80px
+    ),
+    repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(140, 153, 103, 0.2) 40px,
+        rgba(140, 153, 103, 0.2) 80px
+    );
+}
+
+#game-container::before {
+    content: 'Wars Of Pepe';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    color: rgba(44, 44, 44, 0.1);
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 200px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#score, #best-score {
+    position: absolute;
+    top: 10px;
+    font-size: 24px;
+    z-index: 10;
+    color: #2c2c2c;
+    text-shadow: 1px 1px #ffffff;
+}
+
+#score {
+    left: 10px;
+}
+
+#best-score {
+    right: 10px;
+}
+
+#image-container {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    height: calc(100% - 50px);
+    z-index: 1;
+}
+
+#image-container img {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#image-container img:hover {
+    transform: scale(1.1);
+}
+
+.pulsing {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Media queries for responsive design */
+
+@media (max-width: 1200px) {
+    #game-container {
+        width: 600px;
+        height: 450px;
+    }
+
+    #score, #best-score {
+        font-size: 20px;
+    }
+
+    #image-container img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    #title {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    #game-container {
+        width: 100%;
+        height: 300px;
+        border-radius: 10px;
+    }
+
+    #score, #best-score {
+        font-size: 18px;
+    }
+
+    #image-container img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    #title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    #game-container {
+        width: 100%;
+        height: 225px;
+        border-radius: 10px;
+    }
+
+    #score, #best-score {
+        font-size: 14px;
+        top: 5px; /* Понижаем топ для лучшего отображения */
+    }
+
+    #score {
+        left: 5px;
+    }
+
+    #best-score {
+        right: 5px;
+    }
+
+    #game-container::before {
+        font-size: 20px;
+        line-height: 100px;
+    }
+
+    #image-container img {
+        width: 60px;
+        height: 60px;
+    }
+}
